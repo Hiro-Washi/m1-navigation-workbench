@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>M1 · 地点と巡回計画</title><link rel="stylesheet" href="planning.css"></head>
+<body>
+<header><a href="live.html">← M1 Console</a><div><h1>地点と巡回計画</h1><span>PCに保存 · 機体未接続でも編集できます</span></div><strong>計画編集</strong><button id="save">保存</button><button id="export">JSONを書き出す</button></header>
+<main>
+ <section class="stage" aria-label="地図と経路"><canvas id="mapCanvas" tabindex="0" aria-label="地図。地点追加モードでクリックして登録します"></canvas>
+  <div class="tools glass"><button id="fit">全体</button><button id="zoomIn" aria-label="拡大">＋</button><button id="zoomOut" aria-label="縮小">−</button><select id="tool" aria-label="地図の操作"><option value="pan">移動・選択</option><option value="waypoint">地点を追加</option><option value="keepout">進入禁止領域</option></select><button id="finishPolygon" disabled>領域を確定</button><button id="undo" disabled>戻す</button></div>
+  <div id="empty" class="empty glass"><h2>地図から計画をつくる</h2><p>保存した map.yaml と map.pgm を読み込んでください。地点を置き、順序を決め、巡回計画として保存できます。</p><p>実機への移動指令は送りません。</p></div>
+  <div class="legend glass"><span class="point">●</span> 地点 <span class="route">━</span> 訪問順 <span class="keepout">▧</span> 進入禁止 <span id="scale"></span></div>
+ </section>
+ <aside>
+  <section><h2>地図・保存計画</h2><label>保存計画<select id="plans"><option value="">新しい計画</option></select></label><div class="row"><button id="load">開く</button><button id="refresh">一覧更新</button></div>
+   <label>地図設定 (.yaml)<input id="yamlFile" type="file" accept=".yaml,.yml"></label><label>地図画像 (.pgm)<input id="pgmFile" type="file" accept=".pgm"></label><button id="importMap">地図を読み込む / 新規計画</button>
+   <details><summary>計画JSONを読み込む</summary><input id="planFile" type="file" accept=".json"><p>同じ地図を先に読み込む必要があります。実行状態は持ち込みません。</p></details>
+   <p id="mapInfo" class="muted">地図未選択</p>
+  </section>
+  <section><h2>地点 <span id="waypointCount"></span></h2><div id="waypoints" class="list"></div><p class="muted">「地点を追加」で地図をクリック。ドラッグすると向きも指定できます。</p>
+   <fieldset id="pointEditor" disabled><label>名前<input id="pointName" maxlength="80"></label><div class="row"><label>X (m)<input id="pointX" type="number" step="0.01"></label><label>Y (m)<input id="pointY" type="number" step="0.01"></label><label>向き (°)<input id="pointYaw" type="number" step="1"></label></div><div class="row"><button id="applyPoint">地点を更新</button><button id="removePoint" class="danger">削除</button></div></fieldset>
+  </section>
+  <section><h2>経路・訪問順</h2><div class="row"><select id="routes" aria-label="経路"></select><button id="newRoute">新規</button><button id="removeRoute" class="danger">削除</button></div><label>経路名<input id="routeName" maxlength="80"></label><button id="renameRoute">名前を反映</button><div class="row"><select id="addPoint" aria-label="経路に追加する地点"></select><button id="appendPoint">末尾に追加</button></div><ol id="routeSteps"></ol><p class="muted">線は訪問順です。障害物を避ける走行経路はNav2で別途計算します。</p></section>
+  <section><h2>巡回シナリオ</h2><label>名前<input id="patrolName" value="101室の巡回" maxlength="80"></label><div class="row"><label>周回数<input id="cycles" type="number" min="1" max="100" value="1"></label><label>各地点で待機 (秒)<input id="dwell" type="number" min="0" max="600" value="0"></label></div><button id="addPatrol">選択中の経路で登録</button><div id="patrols" class="list"></div></section>
+  <section><h2>Nav速度の上限</h2><div class="row"><label>並進 (m/s)<input id="navTranslation" type="number" min="0.01" max="0.15" step="0.01" value="0.15"></label><label>旋回 (rad/s)<input id="navRotation" type="number" min="0.01" max="0.5" step="0.05" value="0.5"></label></div><button id="applyProfile">計画に保存</button><p class="muted">初期上限 0.15 m/s・0.5 rad/s。機体への反映・走行開始はまだ行いません。</p></section>
+  <section><h2>進入禁止領域</h2><div id="keepouts" class="list"></div><p class="muted">頂点を順にクリックし「領域を確定」。元の地図は変更しません。Nav2への適用は別途必要です。</p></section>
+ </aside>
+</main><footer id="status" role="status" aria-live="polite">準備中</footer><script type="module" src="planning.mjs"></script></body></html>

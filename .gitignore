@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.env
+*.pem
+*.key
+*.db3
+*.mcap
+evidence/
+vendor/
+dist/

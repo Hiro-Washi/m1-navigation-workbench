@@ -1,0 +1,25 @@
+{
+  "files": {
+    ".github/workflows/ci.yml": "4afa3d087169a37ce5103bfa32cc3c5f4cdf2276c1c9aadc75e9452d8f250899",
+    ".gitignore": "4d5a9331f9f6caec85bdb248158ff0413c39d8263ce15f6af049caa2a837731e",
+    "ISSUE_DRAFT.md": "6cd0debc67c05a1df5f98443db28964ca5392e3ad7e51951fbdf6e7ff845e238",
+    "README.md": "c6847f2301560e9578cffc6f8f835d414c86feb0621ba4a8cac7b8b73fe25869",
+    "ci/first_use.py": "c15e6805ca163abe8eb1fa27ad48790a5ad7b909287aa1dacacfb6b250b08e7e",
+    "ci/run.py": "c2941df740825bd357c6294cd416f6e14ff55c19d3c2f9345da1aff7b3c6ba97",
+    "navigation/mission_plan.py": "519fe60602ac1dbc03b550ef04d4c0d0f2bb284111b8fdffb85e5866e7f1874d",
+    "navigation/planning_service.py": "bdb152f23b085329b665ec61f70cf96f3b1a2be22b245a6b3ecaf2180308c184",
+    "navigation/test_mission_plan.py": "c5d380bc8439f200103fcf218c78c165e6cd8a81053b4b2e7013878a94caecd9",
+    "navigation/test_planning_service.py": "ea6625a673c35c5d06ea86fe98ec9dbe4fef268f73124bf99cd25e364d0980aa",
+    "preview/planning.css": "a0e4e0f6daf5a9302054df4649686f81583cc94ab926244ed3b6a3b51d59d8c4",
+    "preview/planning.html": "b0134806f89059750ad0fa2e737ef98c4ac7877e3f8e4af77e4c7c495cfcee57",
+    "preview/planning.mjs": "ea45a5294dd4fadf4046c3516c26fd79836afc133a91aab16e5b7970679c4c46",
+    "preview/planning_bridge.mjs": "02d8fc1e9062243a70ddce11b9cb43fe76964e3847025b84a6284cf97e417091",
+    "preview/planning_model.mjs": "db29874c7598426900a1323fd0ff533deff2998bfd6250939a19e98250b6839d",
+    "preview/planning_server.mjs": "594660c9e47f2b4724425fc3e59f87e2df7cdbdcf51813b1c244f30fc7ef2fd0",
+    "preview/tests/planning_model.test.mjs": "cd9b8f76a4da2898fa63f9885b970ed978457a7caac58118e71f80e221bcd5c3"
+  },
+  "license_review": "unspecified; no LICENSE granted in this release",
+  "publication_approved": true,
+  "schema_version": 1,
+  "scope": "standalone local planning editor; no robot runtime"
+}
